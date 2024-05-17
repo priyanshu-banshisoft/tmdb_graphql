@@ -7,9 +7,9 @@ import (
 
 
 
-func NewSchema(apiKey string) graphql.Schema {
-    client := tmdb.NewClient(apiKey)
+var Schema graphql.Schema
 
+func init() {
     var queryType = graphql.NewObject(
         graphql.ObjectConfig{
             Name: "Query",
@@ -17,6 +17,8 @@ func NewSchema(apiKey string) graphql.Schema {
                 "popularMovies": &graphql.Field{
                     Type: graphql.NewList(movieType),
                     Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
                         return client.FetchPopularMovies()
                     },
                 },
@@ -28,6 +30,8 @@ func NewSchema(apiKey string) graphql.Schema {
                         },
                     },
                     Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
                         id, ok := p.Args["id"].(int)
                         if ok {
                             return client.FetchMovieDetails(id)
@@ -39,11 +43,13 @@ func NewSchema(apiKey string) graphql.Schema {
         },
     )
 
-    schema, _ := graphql.NewSchema(
+    var err error
+    Schema, err = graphql.NewSchema(
         graphql.SchemaConfig{
             Query: queryType,
         },
     )
-
-    return schema
+    if err != nil {
+        panic(err)
+    }
 }
