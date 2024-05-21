@@ -22,6 +22,22 @@ func init() {
                         return client.FetchPopularMovies()
                     },
                 },
+                "trendingMovies": &graphql.Field{
+                    Type: graphql.NewList(movieType),
+                    Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
+                        return client.FetchTrendingMovies()
+                    },
+                },
+                "genres" : &graphql.Field{
+                    Type: graphql.NewList(genres),
+                    Resolve: func (p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
+                        return client.FetchMovieGenres()
+                    },
+                },
                 "movie": &graphql.Field{
                     Type: movieType,
                     Args: graphql.FieldConfigArgument{
