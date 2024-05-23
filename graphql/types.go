@@ -36,6 +36,9 @@ var movieType = graphql.NewObject(
 			"genre_ids": &graphql.Field{
 				Type: graphql.NewList(graphql.Int),
 			},
+			"genres" : &graphql.Field{
+				Type: graphql.NewList(genres),
+			},
 			"popularity": &graphql.Field{
 				Type: graphql.Float,
 			},

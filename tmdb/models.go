@@ -10,6 +10,7 @@ type Movie struct {
 	Adult            bool    `json:"adult"`
 	Title            string  `json:"title"`
 	OriginalLanguage string  `json:"original_language"`
+	Genres			[]Genres `json:"genres"`
 	GenreIds         []int   `json:"genre_ids"`
 	Popularity       float64 `json:"popularity"`
 	ReleaseDate      string  `json:"release_date"`
