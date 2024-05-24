@@ -50,7 +50,7 @@ func init() {
                         client := tmdb.NewClient(apiKey)
                         id, ok := p.Args["id"].(int)
                         if ok {
-                            return client.FetchMovieCast(id)
+                            return client.FetchMovieDetails(id)
                         }
                         return nil, nil
                     },
