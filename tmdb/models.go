@@ -25,8 +25,8 @@ type Genres struct {
 }
 
 type Credits struct {
-	ID   int `json:"id"`
-	Cast []Cast  `json:"cast"`
+	ID   int    `json:"id"`
+	Cast []Cast `json:"cast"`
 }
 
 type Cast struct {
@@ -42,4 +42,21 @@ type Cast struct {
 	Character          string  `json:"character"`
 	CreditID           string  `json:"credit_id"`
 	Order              int     `json:"order"`
+}
+
+type TV struct {
+	BackdropPath     string  `json:"backdrop_path"`
+	ID               int     `json:"id"`
+	OriginalName     string  `json:"original_name"`
+	Overview         string  `json:"overview"`
+	PosterPath       string  `json:"poster_path"`
+	MediaType        string  `json:"media_type"`
+	Adult            bool    `json:"adult"`
+	Name             string  `json:"name"`
+	OriginalLanguage string  `json:"original_language"`
+	GenreIds         []int   `json:"genre_ids"`
+	Popularity       float64 `json:"popularity"`
+	FirstAirDate     string  `json:"first_air_date"`
+	VoteAverage      float64 `json:"vote_average"`
+	VoteCount        int     `json:"vote_count"`
 }

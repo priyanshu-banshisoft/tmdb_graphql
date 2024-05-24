@@ -30,6 +30,14 @@ func init() {
                         return client.FetchTrendingMovies()
                     },
                 },
+                "trendingTv" : &graphql.Field{
+                    Type: graphql.NewList(tvType),
+                    Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
+                        return client.FetchTrendingTv()
+                    },
+                },
                 "genres" : &graphql.Field{
                     Type: graphql.NewList(genres),
                     Resolve: func (p graphql.ResolveParams) (interface{}, error) {

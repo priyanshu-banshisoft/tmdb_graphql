@@ -58,6 +58,62 @@ var movieType = graphql.NewObject(
 	},
 )
 
+var tvType = graphql.NewObject(
+	graphql.ObjectConfig{
+		Name: "Tv",
+		Fields: graphql.Fields{
+			"backdrop_path": &graphql.Field{
+				Type: graphql.String,
+			},
+			"id": &graphql.Field{
+				Type: graphql.Int,
+			},
+			"original_title": &graphql.Field{
+				Type: graphql.String,
+			},
+			"overview": &graphql.Field{
+				Type: graphql.String,
+			},
+			"poster_path": &graphql.Field{
+				Type: graphql.String,
+			},
+			"media_type": &graphql.Field{
+				Type: graphql.String,
+			},
+			"adult": &graphql.Field{
+				Type: graphql.Boolean,
+			},
+			"title": &graphql.Field{
+				Type: graphql.String,
+			},
+			"original_language": &graphql.Field{
+				Type: graphql.String,
+			},
+			"genre_ids": &graphql.Field{
+				Type: graphql.NewList(graphql.Int),
+			},
+			"genres" : &graphql.Field{
+				Type: graphql.NewList(genres),
+			},
+			"popularity": &graphql.Field{
+				Type: graphql.Float,
+			},
+			"release_date": &graphql.Field{
+				Type: graphql.String,
+			},
+			"video": &graphql.Field{
+				Type: graphql.Boolean,
+			},
+			"vote_average": &graphql.Field{
+				Type: graphql.Float,
+			},
+			"vote_count": &graphql.Field{
+				Type: graphql.Int,
+			},
+		},
+	},
+)
+
 var genres = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Genres",
@@ -71,6 +127,9 @@ var genres = graphql.NewObject(
 		},
 	},
 )
+
+
+
 
 var credit = graphql.NewObject(
 	graphql.ObjectConfig{

@@ -99,3 +99,20 @@ func (c *Client) FetchMovieCast(id int) (*Credits, error) {
     }
     return &credit, nil
 }
+
+func (c *Client) FetchTrendingTv() ([]TV , error) {
+    url := fmt.Sprintf("%s/trending/tv/day?api_key=%s",apiURL,c.apiKey)
+    resp, err := http.Get(url)
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+
+    var result struct {
+        Results []TV `json:"results"`
+    }
+    if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+        return nil, err
+    }
+    return result.Results, nil
+}
