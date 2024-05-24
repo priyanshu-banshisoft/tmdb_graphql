@@ -71,3 +71,34 @@ var genres = graphql.NewObject(
 		},
 	},
 )
+
+var credit = graphql.NewObject(
+	graphql.ObjectConfig{
+		Name : "Credits",
+		Fields: graphql.Fields{
+			"id": &graphql.Field{ 
+				Type: graphql.Int,
+			},
+			"cast": &graphql.Field{
+				Type: graphql.NewList(cast),
+			},
+		},
+	},
+)
+
+var cast = graphql.NewObject(
+	graphql.ObjectConfig{
+		Name: "Cast",
+		Fields: graphql.Fields{
+			"id": &graphql.Field{ 
+				Type: graphql.Int,
+			},
+			"profile_path": &graphql.Field{
+				Type: graphql.String,
+			},
+			"name": &graphql.Field{
+				Type: graphql.String,
+			},
+		},
+	},
+)

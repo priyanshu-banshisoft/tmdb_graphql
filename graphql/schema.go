@@ -50,7 +50,25 @@ func init() {
                         client := tmdb.NewClient(apiKey)
                         id, ok := p.Args["id"].(int)
                         if ok {
-                            return client.FetchMovieDetails(id)
+                            return client.FetchMovieCast(id)
+                        }
+                        return nil, nil
+                    },
+                },
+                "credit": &graphql.Field{
+                    Type: credit,
+                    Args: graphql.FieldConfigArgument{
+                        "id" : &graphql.ArgumentConfig{
+                            Type: graphql.Int,
+                        },
+
+                    },
+                    Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+                        apiKey := p.Context.Value("apiKey").(string)
+                        client := tmdb.NewClient(apiKey)
+                        id, ok := p.Args["id"].(int)
+                        if ok {
+                            return client.FetchMovieCast(id)
                         }
                         return nil, nil
                     },

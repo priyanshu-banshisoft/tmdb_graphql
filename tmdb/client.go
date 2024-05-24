@@ -84,3 +84,18 @@ func (c *Client) FetchMovieDetails(id int) (*Movie, error) {
     }
     return &movie, nil
 }
+
+func (c *Client) FetchMovieCast(id int) (*Credits, error) {
+    url := fmt.Sprintf("%s/movie/%d/credits?api_key=%s", apiURL, id, c.apiKey)
+    resp, err := http.Get(url)
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+
+    var credit Credits
+    if err := json.NewDecoder(resp.Body).Decode(&credit); err != nil {
+        return nil, err
+    }
+    return &credit, nil
+}

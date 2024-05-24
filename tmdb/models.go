@@ -1,25 +1,45 @@
 package tmdb
 
 type Movie struct {
-	BackdropPath     string  `json:"backdrop_path"`
-	ID               int     `json:"id"`
-	OriginalTitle    string  `json:"original_title"`
-	Overview         string  `json:"overview"`
-	PosterPath       string  `json:"poster_path"`
-	MediaType        string  `json:"media_type"`
-	Adult            bool    `json:"adult"`
-	Title            string  `json:"title"`
-	OriginalLanguage string  `json:"original_language"`
-	Genres			[]Genres `json:"genres"`
-	GenreIds         []int   `json:"genre_ids"`
-	Popularity       float64 `json:"popularity"`
-	ReleaseDate      string  `json:"release_date"`
-	Video            bool    `json:"video"`
-	VoteAverage      float64 `json:"vote_average"`
-	VoteCount        int     `json:"vote_count"`
+	BackdropPath     string   `json:"backdrop_path"`
+	ID               int      `json:"id"`
+	OriginalTitle    string   `json:"original_title"`
+	Overview         string   `json:"overview"`
+	PosterPath       string   `json:"poster_path"`
+	MediaType        string   `json:"media_type"`
+	Adult            bool     `json:"adult"`
+	Title            string   `json:"title"`
+	OriginalLanguage string   `json:"original_language"`
+	Genres           []Genres `json:"genres"`
+	GenreIds         []int    `json:"genre_ids"`
+	Popularity       float64  `json:"popularity"`
+	ReleaseDate      string   `json:"release_date"`
+	Video            bool     `json:"video"`
+	VoteAverage      float64  `json:"vote_average"`
+	VoteCount        int      `json:"vote_count"`
 }
 
 type Genres struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
-} 
+}
+
+type Credits struct {
+	ID   int `json:"id"`
+	Cast []Cast  `json:"cast"`
+}
+
+type Cast struct {
+	Adult              bool    `json:"adult"`
+	Gender             int     `json:"gender"`
+	ID                 int     `json:"id"`
+	KnownForDepartment string  `json:"known_for_department"`
+	Name               string  `json:"name"`
+	OriginalName       string  `json:"original_name"`
+	Popularity         float64 `json:"popularity"`
+	ProfilePath        string  `json:"profile_path"`
+	CastID             int     `json:"cast_id"`
+	Character          string  `json:"character"`
+	CreditID           string  `json:"credit_id"`
+	Order              int     `json:"order"`
+}
