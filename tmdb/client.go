@@ -116,3 +116,21 @@ func (c *Client) FetchTrendingTv() ([]TV , error) {
     }
     return result.Results, nil
 }
+
+// func (c *Client) Login(username string,password string) (User , error) { 
+//     params := url.Values{}
+//     params.Add("username", username)
+//     params.Add("password", password)
+//     url := fmt.Sprintf("https://dummyjson.com/auth/login")
+//     resp,err := http.PostForm (url,params)
+//     if err != nil {
+//         return _, err
+//     }
+//     defer resp.Body.Close()
+//     var result User
+//     if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+//         return _, err
+//     }
+//     return result, nil
+
+// }

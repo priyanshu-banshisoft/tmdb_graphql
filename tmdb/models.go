@@ -60,3 +60,14 @@ type TV struct {
 	VoteAverage      float64 `json:"vote_average"`
 	VoteCount        int     `json:"vote_count"`
 }
+
+type User struct {
+	ID        int    `json:"id"`
+	Username  string `json:"username"`
+	Email     string `json:"email"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Gender    string `json:"gender"`
+	Image     string `json:"image"`
+	Token     string `json:"token"`
+}
