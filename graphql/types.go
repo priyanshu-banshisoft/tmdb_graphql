@@ -36,7 +36,7 @@ var movieType = graphql.NewObject(
 			"genre_ids": &graphql.Field{
 				Type: graphql.NewList(graphql.Int),
 			},
-			"genres" : &graphql.Field{
+			"genres": &graphql.Field{
 				Type: graphql.NewList(genres),
 			},
 			"popularity": &graphql.Field{
@@ -68,7 +68,7 @@ var tvType = graphql.NewObject(
 			"id": &graphql.Field{
 				Type: graphql.Int,
 			},
-			"original_title": &graphql.Field{
+			"name": &graphql.Field{
 				Type: graphql.String,
 			},
 			"overview": &graphql.Field{
@@ -83,32 +83,26 @@ var tvType = graphql.NewObject(
 			"adult": &graphql.Field{
 				Type: graphql.Boolean,
 			},
-			"title": &graphql.Field{
-				Type: graphql.String,
-			},
 			"original_language": &graphql.Field{
 				Type: graphql.String,
 			},
 			"genre_ids": &graphql.Field{
 				Type: graphql.NewList(graphql.Int),
 			},
-			"genres" : &graphql.Field{
+			"genres": &graphql.Field{
 				Type: graphql.NewList(genres),
 			},
 			"popularity": &graphql.Field{
 				Type: graphql.Float,
-			},
-			"release_date": &graphql.Field{
-				Type: graphql.String,
-			},
-			"video": &graphql.Field{
-				Type: graphql.Boolean,
 			},
 			"vote_average": &graphql.Field{
 				Type: graphql.Float,
 			},
 			"vote_count": &graphql.Field{
 				Type: graphql.Int,
+			},
+			"first_air_date": &graphql.Field{
+				Type: graphql.String,
 			},
 		},
 	},
@@ -128,14 +122,11 @@ var genres = graphql.NewObject(
 	},
 )
 
-
-
-
 var credit = graphql.NewObject(
 	graphql.ObjectConfig{
-		Name : "Credits",
+		Name: "Credits",
 		Fields: graphql.Fields{
-			"id": &graphql.Field{ 
+			"id": &graphql.Field{
 				Type: graphql.Int,
 			},
 			"cast": &graphql.Field{
@@ -149,7 +140,7 @@ var cast = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Cast",
 		Fields: graphql.Fields{
-			"id": &graphql.Field{ 
+			"id": &graphql.Field{
 				Type: graphql.Int,
 			},
 			"profile_path": &graphql.Field{
